@@ -6,6 +6,7 @@ Overview
 Features
 --------
 
++ Only shows the status of [Weakened Soul][] if it was applied by the player, not other priests.
 + Shows the [Weakened Soul][] texture when bound to an icon indicator.
 + Optionally change the color of the status when bound indicator that supports colors.
 + Optionally display the duration instead of the debuff name when bound to a text indicator.
