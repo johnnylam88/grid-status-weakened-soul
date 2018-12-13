@@ -1,0 +1,15 @@
+## Interface: 80000
+## Version: @project-version@
+
+## Title: GridStatusWeakenedSoulDebuff
+## Notes: Grid status plugin for the Weakened Soul debuff applied by the player.
+
+## Author: Johnny C. Lam
+## X-License: BSD License
+## X-Website: https://github.com/ultijlam/grid-status-weakened-soul
+## X-Curse-Project-ID: 308947
+## X-WoWI-ID: 24869
+
+## Dependencies: Grid
+
+Core.lua
