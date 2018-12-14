@@ -5,10 +5,12 @@
 
 local format = string.format
 local next = next
+local select = select
 local wipe = table.wipe
 -- GLOBALS: GetSpellInfo
 -- GLOBALS: GetTime
 -- GLOBALS: Grid
+-- GLOBALS: UnitClass
 -- GLOBALS: UnitDebuff
 -- GLOBALS: UnitGUID
 -- GLOBALS: UnitIsUnit
@@ -29,6 +31,9 @@ end
 -- we are showing the time left as the status.
 local active = {}
 addon.active = active -- for debugging
+
+-- The player's class.
+local class = select(2, UnitClass("player"))
 
 ---------------------------------------------------------------------
 
@@ -110,7 +115,8 @@ function addon:PostInitialize()
 end
 
 function addon:OnStatusEnable(status)
-	if status == STATUS_NAME then
+	if status == STATUS_NAME and class == "PRIEST" then
+		self:Debug("Enabling status.")
 		self:RegisterEvent("UNIT_AURA", "OnUnitAura")
 		self:RegisterMessage("Grid_RosterUpdated", "OnRosterUpdate")
 		self:UpdateAllUnits()
@@ -118,7 +124,8 @@ function addon:OnStatusEnable(status)
 end
 
 function addon:OnStatusDisable(status)
-	if status == STATUS_NAME then
+	if status == STATUS_NAME and class == "PRIEST" then
+		self:Debug("Disabling status.")
 		self:UnregisterEvent("UNIT_AURA")
 		self:UnregisterMessage("Grid_RosterUpdated")
 		wipe(active)
